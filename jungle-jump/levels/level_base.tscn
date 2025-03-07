@@ -1,0 +1,38 @@
+[gd_scene load_steps=7 format=3 uid="uid://d3a72b0b5jqbm"]
+
+[ext_resource type="TileSet" uid="uid://dhxw3f8l2saqn" path="res://assets/tilesets/tiles_world.tres" id="1_gdxrn"]
+[ext_resource type="Script" path="res://levels/level_base.gd" id="1_nfptt"]
+[ext_resource type="TileSet" uid="uid://dn505hopwb4de" path="res://assets/tilesets/tiles_items.tres" id="2_0x8dd"]
+[ext_resource type="Texture2D" uid="uid://dw7ukcs0y6pa2" path="res://assets/environment/back.png" id="2_u3w23"]
+[ext_resource type="TileSet" uid="uid://blhd0ogpuydej" path="res://assets/tilesets/tiles_spikes.tres" id="3_miye2"]
+[ext_resource type="PackedScene" uid="uid://bvem6kph75siw" path="res://player/player.tscn" id="5_6p54k"]
+
+[node name="LevelBase" type="Node2D"]
+script = ExtResource("1_nfptt")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.2, 1)
+motion_mirroring = Vector2(450, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(-33, -2)
+scale = Vector2(1.19792, 1.12708)
+texture = ExtResource("2_u3w23")
+
+[node name="World" type="TileMap" parent="."]
+tile_set = ExtResource("1_gdxrn")
+format = 2
+
+[node name="Items" type="TileMap" parent="."]
+tile_set = ExtResource("2_0x8dd")
+format = 2
+
+[node name="Danger" type="TileMap" parent="."]
+tile_set = ExtResource("3_miye2")
+format = 2
+
+[node name="Player" parent="." instance=ExtResource("5_6p54k")]
+
+[node name="SpawnPoint" type="Marker2D" parent="."]
